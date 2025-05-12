@@ -1,17 +1,22 @@
 package pageobject;
 
+import elements.ButtonElement;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class MainPage {
-
+    protected  WebDriver driver;
     public static String MAIN_PAGE_URL = "https://qa-scooter.praktikum-services.ru/";
     public static final int FIVE_SECONDS = 5;
-    public static final By statusOrderButton = By.xpath(
-            ".//button[contains(@class, 'Header_Link')]");
+
+    @FindBy(xpath = ".//button[contains(@class,'App_CookieButton')]")
+    private WebElement cookeButtonWebElement;
+
+
     public static final By orderNumberInput = By.xpath(
             ".//input[contains(@type, 'text')]");
     public static final By cookeButton = By.xpath(".//button[contains(@class,'App_CookieButton')]");
@@ -20,14 +25,11 @@ public class MainPage {
     public static final String faqAnswerPattern = ".//div[contains(@class,'accordion__panel') " +
             "and not(@hidden)]/p[contains(text(),'%s')]";
 
-    public static By goButton = By.xpath(
-            ".//button[contains(@class, 'Header_Button') and text()='Go!']");
     public static By headerOrderButton = By.xpath(
             ".//div[contains(@class, 'Header_Nav')]/button[contains(@class,'Button_Button')]");
     public static By bodyOrderButton = By.xpath(
             ".//div[contains(@class, 'Home_FinishButton')]/button[contains(@class,'Button_Button')]");
 
-    protected WebDriver driver;
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -47,9 +49,15 @@ public class MainPage {
     }
 
     public void statusOrderButtonClick() {
-        new WebDriverWait(driver, Duration.ofSeconds(FIVE_SECONDS)).
-                until(ExpectedConditions.elementToBeClickable(statusOrderButton));
-        driver.findElement(statusOrderButton).click();
+        String statusOrderButtonLocator = ".//button[contains(@class, 'Header_Link')]";
+        ButtonElement statusOrderButton = new ButtonElement(statusOrderButtonLocator);
+        statusOrderButton.clickButton();
+    }
+
+    public void goButtonClick() {
+        String goButtonLocator = ".//button[contains(@class, 'Header_Button') and text()='Go!']";
+        ButtonElement goButton = new ButtonElement(goButtonLocator);
+        goButton.clickButton();
     }
 
     public void setOrderNumberInput(String orderNumberValue) {
@@ -57,12 +65,6 @@ public class MainPage {
                 until(ExpectedConditions.visibilityOfElementLocated(orderNumberInput));
         driver.findElement(orderNumberInput).clear();
         driver.findElement(orderNumberInput).sendKeys(orderNumberValue);
-    }
-
-    public void goButtonClick() {
-        new WebDriverWait(driver, Duration.ofSeconds(FIVE_SECONDS)).
-                until(ExpectedConditions.elementToBeClickable(goButton));
-        driver.findElement(goButton).click();
     }
 
     public void headerOrderButtonClick() {
