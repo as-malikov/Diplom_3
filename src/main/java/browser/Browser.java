@@ -23,6 +23,7 @@ public class Browser {
         properties.load(new FileInputStream("src/test/resources/browser.properties"));
         String browserProperty = properties.getProperty("testBrowser");
         BrowserType browserType =   BrowserType.valueOf(browserProperty);
+        System.out.println("browserType = " + browserType);
         switch (browserType) {
             case CHROME :
                 Configuration.browser = "CHROME";
@@ -31,12 +32,13 @@ public class Browser {
                 Configuration.browser = "FIREFOX";
                 break;
             case YANDEX :
-                System.setProperty("webdriver.chrome.driver", "C:/Users/user/Downloads/yandexdriver-25.2.0" +
-                        ".2123-win64/yandexdriver.exe");
+//                System.setProperty("webdriver.chrome.driver", "C:/Users/user/Downloads/yandexdriver-25.2.0" +
+//                        ".2123-win64/yandexdriver.exe");
                 Configuration.browser = "YANDEX";
                 break;
             default:
                 throw new RuntimeException("Browser undefined");
         }
+
     }
 }
