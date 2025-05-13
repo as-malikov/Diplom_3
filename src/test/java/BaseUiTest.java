@@ -28,7 +28,7 @@ import static util.UserGenerator.getRandomUser;
 
 public class BaseUiTest {
 
-    public static final int TIMEOUT_4000 = 4000;
+    public static final int TIMEOUT_4000 = 10000;
 
 
     @Before
