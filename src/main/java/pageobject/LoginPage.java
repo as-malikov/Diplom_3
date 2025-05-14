@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
-    private String LOGIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/login";
+    public static String LOGIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/login";
     private String inputButtonLocator = ".//*[text() = 'Войти']";
     private String recoveryPasswordLocator = ".//*[text() = 'Восстановить пароль']";
     private String loginInputLocator = ".//input[contains(@name, 'name')]";

@@ -1,6 +1,7 @@
 package pageobject;
 
 import elements.ButtonElement;
+import elements.Element;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +12,7 @@ import java.time.Duration;
 public class MainPage {
     public static final String MAIN_PAGE_URL = "https://stellarburgers.nomoreparties.site";
     private static final String mainInputLocator = ".//*[text() = 'Войти в аккаунт']";
+    private static final String exitButtonLocator = ".//*[text() = 'Выход']";
     private static final  String personalAccountElement = ".//*[text() = 'Личный Кабинет']";
 
     private static final String bunSpanElement = ".//span[text() = 'Булки']";
@@ -44,5 +46,10 @@ public class MainPage {
     public void personalAccountElementClick() {
         ButtonElement personalAccountButton= new ButtonElement(personalAccountElement);
         personalAccountButton.clickButton();
+    }
+
+    public void bunElementIsVisible() {
+        Element element = new Element(bunSpanElement);
+        element.elementIsVisible();
     }
 }

@@ -28,13 +28,13 @@ import static util.UserGenerator.getRandomShortPasswordUser;
 import static util.UserGenerator.getRandomUser;
 
 @RunWith(Parameterized.class)
-public class LoginUserParamTest {
+public class CheckLoginUserParamTest {
     private final User user;
     private static boolean createdUser;
     private UserApi userApi;
     private UserCredential userCredential;
 
-    public LoginUserParamTest(User user, boolean createdUser) {
+    public CheckLoginUserParamTest(User user, boolean createdUser) {
         this.user = user;
         this.createdUser = createdUser;
     }
