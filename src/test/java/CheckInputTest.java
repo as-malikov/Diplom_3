@@ -40,6 +40,7 @@ public class CheckInputTest extends BaseUiTest{
         MainPage mainPage = new MainPage();
         mainPage.inputToProfileMainPage();
         LoginPage loginPage = new LoginPage();
+//        loginPage.loginAndPasswordInput("login", "password");
         loginPage.recoveryPasswordIsDisplayed();
     }
 
