@@ -36,8 +36,13 @@ public class MainPage {
         return this;
     }
 
-    public void inputToProfileMainPage() {
+    public void inputButtonClick() {
         ButtonElement mainInputButton = new ButtonElement(mainInputLocator);
         mainInputButton.clickButton();
+    }
+
+    public void personalAccountElementClick() {
+        ButtonElement personalAccountButton= new ButtonElement(personalAccountElement);
+        personalAccountButton.clickButton();
     }
 }

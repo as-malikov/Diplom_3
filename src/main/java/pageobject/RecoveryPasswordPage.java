@@ -3,21 +3,21 @@ package pageobject;
 import elements.ButtonElement;
 import org.openqa.selenium.WebDriver;
 
-public class RegisterPage {
-    public static final String REGISTER_PAGE_URL = "https://stellarburgers.nomoreparties.site/register";
+public class RecoveryPasswordPage {
+    public static final String RECOVERY_PASSWORD_URL = "https://stellarburgers.nomoreparties.site/forgot-password";
     private String inputButton = ".//*[text() = 'Войти']";
-
+    
     protected WebDriver driver;
 
-    public RegisterPage(WebDriver driver) {
+    public RecoveryPasswordPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    public RegisterPage() {
+    public RecoveryPasswordPage() {
     }
 
-    public RegisterPage openRegisterPage() {
-        driver.get(REGISTER_PAGE_URL);
+    public RecoveryPasswordPage openRecoveryPasswordPage() {
+        driver.get(RECOVERY_PASSWORD_URL);
         return this;
     }
 
@@ -25,5 +25,4 @@ public class RegisterPage {
         ButtonElement mainInputButton = new ButtonElement(inputButton);
         mainInputButton.clickButton();
     }
-
 }

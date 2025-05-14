@@ -17,20 +17,24 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static pageobject.MainPage.MAIN_PAGE_URL;
 import static util.UserGenerator.getRandomUser;
 
-public class CheckInputTest extends BaseUiTest{
+public class CheckInputTest extends BaseUiTest {
     private ValidatableResponse createUserResponse;
     private UserApi userApi;
     private User user;
     private UserCredential userCredential;
     private Gson gson;
+    private boolean canDelete;
 
     @Before
     public void createUser() {
-//        user = getRandomUser();
-//        userApi = new UserApi();
-//        gson = new Gson();
-//        createUserResponse = userApi.createUser(user);
-//        userCredential = getUserCredentialByResponse(createUserResponse);
+        user = getRandomUser();
+        userApi = new UserApi();
+        gson = new Gson();
+        createUserResponse = userApi.createUser(user);
+        userCredential = getUserCredentialByResponse(createUserResponse);
+        createUserResponse.assertThat()
+                .statusCode(200);
+        canDelete = false;
     }
 
     @Test
@@ -38,24 +42,32 @@ public class CheckInputTest extends BaseUiTest{
         open(MAIN_PAGE_URL, MainPage.class);
         System.out.println("url = " + url());
         MainPage mainPage = new MainPage();
-        mainPage.inputToProfileMainPage();
+        mainPage.inputButtonClick();
         LoginPage loginPage = new LoginPage();
+        loginPage.inputIsVisible();
 //        loginPage.loginAndPasswordInput("login", "password");
-        loginPage.recoveryPasswordIsDisplayed();
+        loginPage.loginAndPasswordInput(user.getEmail(), user.getPassword());
+//        loginPage.recoveryPasswordIsDisplayed();
+        canDelete = true;
     }
 
     @After
     public void tearDown() {
-//        if (createUserResponse.extract().statusCode() == SC_OK) {
-//            ValidatableResponse deleteUserResponse = userApi.deleteUser(userCredential.getAccessToken());
-//            deleteUserResponse.log().all()
-//                    .assertThat()
-//                    .statusCode(SC_ACCEPTED);
-//        }
+        if (createUserResponse.extract()
+                .statusCode() == SC_OK && canDelete)
+        {
+            ValidatableResponse deleteUserResponse = userApi.deleteUser(userCredential.getAccessToken());
+            deleteUserResponse.log()
+                    .all()
+                    .assertThat()
+                    .statusCode(SC_ACCEPTED);
+        }
     }
 
     @Step("Get user credential")
     public UserCredential getUserCredentialByResponse(ValidatableResponse response) {
-        return gson.fromJson(response.extract().body().asString(), UserCredential.class);
+        return gson.fromJson(response.extract()
+                .body()
+                .asString(), UserCredential.class);
     }
 }
