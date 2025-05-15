@@ -5,9 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 public class RecoveryPasswordPage {
     public static final String RECOVERY_PASSWORD_URL = "https://stellarburgers.nomoreparties.site/forgot-password";
-    private String inputButton = ".//*[text() = 'Войти']";
-    
     protected WebDriver driver;
+    private String inputButton = ".//*[text() = 'Войти']";
 
     public RecoveryPasswordPage(WebDriver driver) {
         this.driver = driver;

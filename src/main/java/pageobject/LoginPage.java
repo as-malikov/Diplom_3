@@ -3,7 +3,6 @@ package pageobject;
 import elements.ButtonElement;
 import elements.Element;
 import elements.InputElement;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {

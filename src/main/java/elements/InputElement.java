@@ -13,10 +13,6 @@ public class InputElement {
         this.inputElement = $(new By.ByXPath(locator));
     }
 
-    public InputElement(SelenideElement inputElement) {
-        this.inputElement = inputElement;
-    }
-
     public void clearAndSetValue(String inputValue) {
         inputElement.shouldBe(enabled).clear();
         inputElement.setValue(inputValue);
@@ -25,12 +21,6 @@ public class InputElement {
     public void setValue(String inputValue) {
         inputElement.shouldBe(enabled)
                 .setValue(inputValue);
-    }
-
-    public void setValueIfIsEmpty(String value) {
-        if (inputElement.getValue().isEmpty()) {
-            setValue(value);
-        }
     }
 
     public String getValue() {

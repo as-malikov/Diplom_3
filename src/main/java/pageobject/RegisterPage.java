@@ -5,9 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 public class RegisterPage {
     public static final String REGISTER_PAGE_URL = "https://stellarburgers.nomoreparties.site/register";
-    private String inputButton = ".//*[text() = 'Войти']";
-
     protected WebDriver driver;
+    private String inputButton = ".//*[text() = 'Войти']";
 
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
@@ -25,5 +24,4 @@ public class RegisterPage {
         ButtonElement mainInputButton = new ButtonElement(inputButton);
         mainInputButton.clickButton();
     }
-
 }

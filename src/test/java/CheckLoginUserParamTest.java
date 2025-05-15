@@ -1,6 +1,7 @@
 import api.UserApi;
 import com.google.gson.Gson;
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import model.User;
 import model.UserCredential;
@@ -29,8 +30,8 @@ import static util.UserGenerator.getRandomUser;
 
 @RunWith(Parameterized.class)
 public class CheckLoginUserParamTest {
-    private final User user;
     private static boolean createdUser;
+    private final User user;
     private UserApi userApi;
     private UserCredential userCredential;
 
@@ -59,6 +60,7 @@ public class CheckLoginUserParamTest {
     }
 
     @Test
+    @DisplayName("User should be login by input button on MainPage.")
     public void loginByInputButtonTest() {
         open(MAIN_PAGE_URL, MainPage.class);
         MainPage mainPage = new MainPage();
@@ -69,6 +71,7 @@ public class CheckLoginUserParamTest {
     }
 
     @Test
+    @DisplayName("User should be login by personal account button on MainPage.")
     public void personalAccountInputButtonTest() {
         open(MAIN_PAGE_URL, MainPage.class);
         MainPage mainPage = new MainPage();
@@ -79,6 +82,7 @@ public class CheckLoginUserParamTest {
     }
 
     @Test
+    @DisplayName("User should be login by input button on RegisterPage.")
     public void registrationFormInputButtonTest() {
         open(REGISTER_PAGE_URL, RegisterPage.class);
         RegisterPage registerPage = new RegisterPage();
@@ -89,6 +93,7 @@ public class CheckLoginUserParamTest {
     }
 
     @Test
+    @DisplayName("User should be login by input button on RecoveryPasswordPage.")
     public void recoveryPasswordFormInputButtonTest() {
         open(RECOVERY_PASSWORD_URL, RegisterPage.class);
         RecoveryPasswordPage registerPage = new RecoveryPasswordPage();
@@ -101,11 +106,11 @@ public class CheckLoginUserParamTest {
 
     @After
     public void tearDown() {
-            ValidatableResponse deleteUserResponse = userApi.deleteUser(userCredential.getAccessToken());
-            deleteUserResponse.log()
-                    .all()
-                    .assertThat()
-                    .statusCode(SC_ACCEPTED);
+        ValidatableResponse deleteUserResponse = userApi.deleteUser(userCredential.getAccessToken());
+        deleteUserResponse.log()
+                .all()
+                .assertThat()
+                .statusCode(SC_ACCEPTED);
     }
 
     @Step("Get user credential")

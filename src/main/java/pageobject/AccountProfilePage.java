@@ -5,12 +5,11 @@ import elements.Element;
 import org.openqa.selenium.WebDriver;
 
 public class AccountProfilePage {
-    private String ACCOUNT_PROFILE_URL = "https://stellarburgers.nomoreparties.site/account/profile";
+    public String ACCOUNT_PROFILE_URL = "https://stellarburgers.nomoreparties.site/account/profile";
+    protected WebDriver driver;
     private String logoButtonLocator = ".//div/a[@href='/']";
     private String constructorButtonLocator = ".//*[text() = 'Конструктор']";
     private String exitButtonLocator = ".//*[text() = 'Выход']";
-
-    protected WebDriver driver;
 
     public AccountProfilePage(WebDriver driver) {
         this.driver = driver;

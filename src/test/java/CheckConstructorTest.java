@@ -1,13 +1,13 @@
 import api.UserApi;
 import com.google.gson.Gson;
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import model.User;
 import model.UserCredential;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import pageobject.AccountProfilePage;
 import pageobject.LoginPage;
 import pageobject.MainPage;
 
@@ -18,8 +18,8 @@ import static pageobject.LoginPage.LOGIN_PAGE_URL;
 import static util.UserGenerator.getRandomUser;
 
 public class CheckConstructorTest {
-    private User user;
     private static boolean createdUser;
+    private User user;
     private UserApi userApi;
     private UserCredential userCredential;
 
@@ -34,6 +34,7 @@ public class CheckConstructorTest {
     }
 
     @Test
+    @DisplayName("User should go to bun and checking visible bun current form.")
     public void shouldGoBunAndCheckIsVisibleBunTest() {
         open(LOGIN_PAGE_URL, LoginPage.class);
         LoginPage loginPage = new LoginPage();
@@ -43,6 +44,7 @@ public class CheckConstructorTest {
     }
 
     @Test
+    @DisplayName("User should go to bun and checking visible sauce current form.")
     public void shouldGoSauceAndCheckIsVisibleSauceTest() {
         open(LOGIN_PAGE_URL, LoginPage.class);
         LoginPage loginPage = new LoginPage();
@@ -52,6 +54,7 @@ public class CheckConstructorTest {
     }
 
     @Test
+    @DisplayName("User should go to bun and checking visible filling current form.")
     public void shouldGoFillingAndCheckIsVisibleFillingTest() {
         open(LOGIN_PAGE_URL, LoginPage.class);
         LoginPage loginPage = new LoginPage();
@@ -59,7 +62,6 @@ public class CheckConstructorTest {
         loginPage.loginAndPasswordInput(user.getEmail(), user.getPassword());
         mainPage.fillingElementClickAndIsVisible();
     }
-
 
     @After
     public void tearDown() {

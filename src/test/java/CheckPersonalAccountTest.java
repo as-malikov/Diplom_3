@@ -1,6 +1,7 @@
 import api.UserApi;
 import com.google.gson.Gson;
 import io.qameta.allure.Step;
+import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.ValidatableResponse;
 import model.User;
 import model.UserCredential;
@@ -19,7 +20,6 @@ import static util.UserGenerator.getRandomUser;
 
 public class CheckPersonalAccountTest {
     private User user;
-    private static boolean createdUser;
     private UserApi userApi;
     private UserCredential userCredential;
 
@@ -34,6 +34,7 @@ public class CheckPersonalAccountTest {
     }
 
     @Test
+    @DisplayName("User should login by personal account button.")
     public void shouldLoginByPersonalAccountButtonTest() {
         open(LOGIN_PAGE_URL, LoginPage.class);
         LoginPage loginPage = new LoginPage();
@@ -46,6 +47,7 @@ public class CheckPersonalAccountTest {
     }
 
     @Test
+    @DisplayName("User should go from personal account to constructor.")
     public void shouldGoFromPersonalAccountToConstructorTest() {
         open(LOGIN_PAGE_URL, LoginPage.class);
         LoginPage loginPage = new LoginPage();
@@ -58,6 +60,7 @@ public class CheckPersonalAccountTest {
     }
 
     @Test
+    @DisplayName("User should go from personal account to logo.")
     public void shouldGoFromPersonalAccountToLogoTest() {
         open(LOGIN_PAGE_URL, LoginPage.class);
         LoginPage loginPage = new LoginPage();
@@ -70,6 +73,7 @@ public class CheckPersonalAccountTest {
     }
 
     @Test
+    @DisplayName("User should exit from personal account.")
     public void shouldExitFromPersonalAccountTest() {
         open(LOGIN_PAGE_URL, LoginPage.class);
         LoginPage loginPage = new LoginPage();

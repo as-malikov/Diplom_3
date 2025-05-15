@@ -2,14 +2,12 @@ package pageobject;
 
 import elements.ButtonElement;
 import elements.Element;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage {
     public static final String MAIN_PAGE_URL = "https://stellarburgers.nomoreparties.site";
     private static final String mainInputLocator = ".//*[text() = 'Войти в аккаунт']";
-    private static final String exitButtonLocator = ".//*[text() = 'Выход']";
-    private static final  String personalAccountElement = ".//*[text() = 'Личный Кабинет']";
+    private static final String personalAccountElement = ".//*[text() = 'Личный Кабинет']";
 
     private static final String bunButtonlocator = ".//span[text() = 'Булки']";
     private static final String sauceButtonLocator = ".//span[text() = 'Соусы']";
@@ -18,7 +16,6 @@ public class MainPage {
     private static final String bunsSelectedLocator = ".//div[contains(@class, 'current')]//span[text() = 'Булки']";
     private static final String sauceSelectedLocator = ".//div[contains(@class, 'current')]//span[text() = 'Соусы']";
     private static final String fillingSelectedLocator = ".//div[contains(@class, 'current')]//span[text() = 'Начинки']";
-    private By recoveryPasswordLocator = By.xpath(".//*[text() = 'Восстановить пароль']");
 
     protected WebDriver driver;
 
@@ -40,7 +37,7 @@ public class MainPage {
     }
 
     public void personalAccountElementClick() {
-        ButtonElement personalAccountButton= new ButtonElement(personalAccountElement);
+        ButtonElement personalAccountButton = new ButtonElement(personalAccountElement);
         personalAccountButton.clickButton();
     }
 
