@@ -3,6 +3,7 @@ package pageobject;
 import elements.ButtonElement;
 import elements.Element;
 import elements.InputElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
@@ -32,6 +33,7 @@ public class LoginPage {
         buttonElement.clickButton();
     }
 
+    @Step("Login and password input and input button click on LoginPage")
     public void loginAndPasswordInput(String login, String password) {
         InputElement inputLoginElement = new InputElement(loginInputLocator);
         inputLoginElement.clearAndSetValue(login);
@@ -40,12 +42,13 @@ public class LoginPage {
         ButtonElement buttonInputElement = new ButtonElement(inputButtonLocator);
         buttonInputElement.clickButton();
     }
-
+    @Step("Check visible input buton on LoginPage")
     public void inputIsVisible() {
         Element element = new Element(inputLocator);
         element.elementIsVisible();
     }
 
+    @Step("Check not visible input buton on LoginPage")
     public void inputIsNotVisible() {
         Element element = new Element(inputLocator);
         element.elementIsNotVisible();

@@ -43,7 +43,7 @@ public class CheckPersonalAccountTest {
         loginPage.loginAndPasswordInput(user.getEmail(), user.getPassword());
         mainPage.bunElementIsVisible();
         mainPage.personalAccountElementClick();
-        accountProfilePage.exitFromPersonalAccounElementtIsVisible();
+        accountProfilePage.exitFromPersonalAccountElementIsVisible();
     }
 
     @Test

@@ -1,6 +1,7 @@
 package pageobject;
 
 import elements.ButtonElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class RecoveryPasswordPage {
@@ -20,6 +21,7 @@ public class RecoveryPasswordPage {
         return this;
     }
 
+    @Step("Click input button on RecoveryPasswordPage")
     public void inputButtonClick() {
         ButtonElement mainInputButton = new ButtonElement(inputButton);
         mainInputButton.clickButton();

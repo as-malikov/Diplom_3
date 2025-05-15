@@ -2,6 +2,7 @@ package pageobject;
 
 import elements.ButtonElement;
 import elements.Element;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage {
@@ -31,27 +32,32 @@ public class MainPage {
         return this;
     }
 
+    @Step("Input buton click on MainPage")
     public void inputButtonClick() {
         ButtonElement mainInputButton = new ButtonElement(mainInputLocator);
         mainInputButton.clickButton();
     }
 
+    @Step("Personal account buton click on MainPage")
     public void personalAccountElementClick() {
         ButtonElement personalAccountButton = new ButtonElement(personalAccountElement);
         personalAccountButton.clickButton();
     }
 
+    @Step("Check visible bun on MainPage")
     public void bunElementIsVisible() {
         Element element = new Element(bunButtonlocator);
         element.elementIsVisible();
     }
 
+    @Step("Check current bun form visible on MainPage")
     public void bunElementClickedAndIsVisible() {
         bunElementIsVisible();
         Element bunElement = new Element(bunsSelectedLocator);
         bunElement.elementIsVisible();
     }
 
+    @Step("Check click and current sauce form visible on MainPage")
     public void sauceElementClickAndIsVisible() {
         ButtonElement sauceButton = new ButtonElement(sauceButtonLocator);
         sauceButton.clickButton();
@@ -59,6 +65,7 @@ public class MainPage {
         sauceElement.elementIsVisible();
     }
 
+    @Step("Check click and current filling form visible on MainPage")
     public void fillingElementClickAndIsVisible() {
         ButtonElement fillingButton = new ButtonElement(fillingButtonLocator);
         fillingButton.clickButton();
