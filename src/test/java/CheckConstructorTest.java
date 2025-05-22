@@ -18,7 +18,6 @@ import static pageobject.LoginPage.LOGIN_PAGE_URL;
 import static util.UserGenerator.getRandomUser;
 
 public class CheckConstructorTest {
-    private static boolean createdUser;
     private User user;
     private UserApi userApi;
     private UserCredential userCredential;

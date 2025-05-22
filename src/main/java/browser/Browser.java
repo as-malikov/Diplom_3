@@ -9,8 +9,6 @@ import java.util.Properties;
 
 public class Browser {
 
-    protected WebDriver driver;
-
     public static void initDriver() throws IOException {
         Properties properties = new Properties();
         properties.load(new FileInputStream("src/test/resources/browser.properties"));
